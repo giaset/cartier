@@ -9,12 +9,18 @@
 /* Begin PBXBuildFile section */
 		68009497197734230077F01B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68009496197734230077F01B /* AppDelegate.swift */; };
 		68009499197734230077F01B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68009498197734230077F01B /* Images.xcassets */; };
-		680094A5197734230077F01B /* CartierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680094A4197734230077F01B /* CartierTests.swift */; };
 		68691CBA19774D5B00C66C4E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68691CB919774D5B00C66C4E /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		6800949F197734230077F01B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68009489197734230077F01B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 68009490197734230077F01B;
+			remoteInfo = Cartier;
+		};
+		68C26235197753B30046C0CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 68009489197734230077F01B /* Project object */;
 			proxyType = 1;
@@ -29,8 +35,6 @@
 		68009496197734230077F01B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68009498197734230077F01B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6800949E197734230077F01B /* CartierTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartierTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		680094A3197734230077F01B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		680094A4197734230077F01B /* CartierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartierTests.swift; sourceTree = "<group>"; };
 		68691CB919774D5B00C66C4E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,7 +60,6 @@
 			isa = PBXGroup;
 			children = (
 				68009493197734230077F01B /* Cartier */,
-				680094A1197734230077F01B /* CartierTests */,
 				68009492197734230077F01B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,23 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				68009495197734230077F01B /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		680094A1197734230077F01B /* CartierTests */ = {
-			isa = PBXGroup;
-			children = (
-				680094A4197734230077F01B /* CartierTests.swift */,
-				680094A2197734230077F01B /* Supporting Files */,
-			);
-			path = CartierTests;
-			sourceTree = "<group>";
-		};
-		680094A2197734230077F01B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				680094A3197734230077F01B /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -138,6 +124,7 @@
 			);
 			dependencies = (
 				680094A0197734230077F01B /* PBXTargetDependency */,
+				68C26236197753B30046C0CC /* PBXTargetDependency */,
 			);
 			name = CartierTests;
 			productName = CartierTests;
@@ -212,7 +199,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				680094A5197734230077F01B /* CartierTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +209,11 @@
 			isa = PBXTargetDependency;
 			target = 68009490197734230077F01B /* Cartier */;
 			targetProxy = 6800949F197734230077F01B /* PBXContainerItemProxy */;
+		};
+		68C26236197753B30046C0CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 68009490197734230077F01B /* Cartier */;
+			targetProxy = 68C26235197753B30046C0CC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
