@@ -377,6 +377,7 @@
 				680094AA197734230077F01B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		680094AB197734230077F01B /* Build configuration list for PBXNativeTarget "CartierTests" */ = {
 			isa = XCConfigurationList;
@@ -385,6 +386,7 @@
 				680094AD197734230077F01B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

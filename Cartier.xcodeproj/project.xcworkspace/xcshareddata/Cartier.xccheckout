@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C76EFAEE-21FF-48BB-858F-87E98C20FADB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Cartier</string>
+	<key>IDESourceControlProjectPath</key>
+	<string>Cartier.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>AF0F1CA0-5B90-4D45-A77D-B457352F7EB3</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>AF0F1CA0-5B90-4D45-A77D-B457352F7EB3</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AF0F1CA0-5B90-4D45-A77D-B457352F7EB3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Cartier</string>
+		</dict>
+	</array>
+</dict>
+</plist>
