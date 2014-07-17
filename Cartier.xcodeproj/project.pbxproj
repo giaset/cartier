@@ -10,6 +10,7 @@
 		68009497197734230077F01B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68009496197734230077F01B /* AppDelegate.swift */; };
 		68009499197734230077F01B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68009498197734230077F01B /* Images.xcassets */; };
 		680094A5197734230077F01B /* CartierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680094A4197734230077F01B /* CartierTests.swift */; };
+		68691CBA19774D5B00C66C4E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68691CB919774D5B00C66C4E /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +31,7 @@
 		6800949E197734230077F01B /* CartierTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartierTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		680094A3197734230077F01B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		680094A4197734230077F01B /* CartierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartierTests.swift; sourceTree = "<group>"; };
+		68691CB919774D5B00C66C4E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				68009496197734230077F01B /* AppDelegate.swift */,
 				68009498197734230077F01B /* Images.xcassets */,
 				68009494197734230077F01B /* Supporting Files */,
+				68691CB919774D5B00C66C4E /* MainViewController.swift */,
 			);
 			path = Cartier;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68009497197734230077F01B /* AppDelegate.swift in Sources */,
+				68691CBA19774D5B00C66C4E /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +310,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = Cartier/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -317,6 +322,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = Cartier/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
