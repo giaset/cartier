@@ -10,7 +10,32 @@
 		68009497197734230077F01B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68009496197734230077F01B /* AppDelegate.swift */; };
 		68009499197734230077F01B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68009498197734230077F01B /* Images.xcassets */; };
 		68691CBA19774D5B00C66C4E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68691CB919774D5B00C66C4E /* MainViewController.swift */; };
+		68DA7AF2197CF3B200B319AE /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68DA7AEF197CF37F00B319AE /* GPUImage.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		68DA7AEC197CF37F00B319AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68DA7ADD197CF36300B319AE /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A33414DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
+		68DA7AEE197CF37F00B319AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68DA7ADD197CF36300B319AE /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCE209E51943F20C002FEED8;
+			remoteInfo = GPUImageFramework;
+		};
+		68DA7AF0197CF3AA00B319AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68DA7ADD197CF36300B319AE /* GPUImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BCE209E41943F20C002FEED8;
+			remoteInfo = GPUImageFramework;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		68009491197734230077F01B /* Cartier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cartier.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -18,6 +43,7 @@
 		68009496197734230077F01B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68009498197734230077F01B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		68691CB919774D5B00C66C4E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		68DA7ADD197CF36300B319AE /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = "../GPUImage-master/framework/GPUImage.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -25,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68DA7AF2197CF3B200B319AE /* GPUImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,6 +63,7 @@
 			children = (
 				68009493197734230077F01B /* Cartier */,
 				68009492197734230077F01B /* Products */,
+				68DA7ADD197CF36300B319AE /* GPUImage.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +94,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		68DA7AE7197CF37F00B319AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				68DA7AED197CF37F00B319AE /* libGPUImage.a */,
+				68DA7AEF197CF37F00B319AE /* GPUImage.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -80,6 +117,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				68DA7AF1197CF3AA00B319AE /* PBXTargetDependency */,
 			);
 			name = Cartier;
 			productName = Cartier;
@@ -110,12 +148,35 @@
 			mainGroup = 68009488197734230077F01B;
 			productRefGroup = 68009492197734230077F01B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 68DA7AE7197CF37F00B319AE /* Products */;
+					ProjectRef = 68DA7ADD197CF36300B319AE /* GPUImage.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				68009490197734230077F01B /* Cartier */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		68DA7AED197CF37F00B319AE /* libGPUImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGPUImage.a;
+			remoteRef = 68DA7AEC197CF37F00B319AE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		68DA7AEF197CF37F00B319AE /* GPUImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GPUImage.framework;
+			remoteRef = 68DA7AEE197CF37F00B319AE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6800948F197734230077F01B /* Resources */ = {
@@ -139,6 +200,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		68DA7AF1197CF3AA00B319AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GPUImageFramework;
+			targetProxy = 68DA7AF0197CF3AA00B319AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		680094A6197734230077F01B /* Debug */ = {
