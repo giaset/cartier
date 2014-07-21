@@ -13,8 +13,9 @@ import GPUImage
 class MainViewController: UIViewController {
     
     var videoCamera:GPUImageVideoCamera?
-    var overlayView:UIView?
     var videoView:GPUImageView?
+    var whiteOverlayView:UIView?
+    var gaussianBlurFilter:GPUImageGaussianBlurFilter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,17 +27,22 @@ class MainViewController: UIViewController {
         videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
         videoCamera!.outputImageOrientation = .Portrait
         
-        // Create our video view
+        // Create the video view
         videoView = GPUImageView(frame: self.view.frame)
         self.view.addSubview(videoView)
         
         // Create white overlay view
-        overlayView = UIView(frame: self.view.frame)
-        overlayView!.backgroundColor = UIColor.whiteColor()
-        overlayView!.alpha = 0.6;
-        self.view.addSubview(overlayView)
+        whiteOverlayView = UIView(frame: self.view.frame)
+        whiteOverlayView!.backgroundColor = UIColor.whiteColor()
+        whiteOverlayView!.alpha = 0.6;
+        self.view.addSubview(whiteOverlayView)
         
-        videoCamera?.addTarget(videoView)
+        // Create the Gaussian blur filter
+        gaussianBlurFilter = GPUImageGaussianBlurFilter()
+        
+        // Link everything together and start the camera capture!
+        videoCamera?.addTarget(gaussianBlurFilter)
+        gaussianBlurFilter?.addTarget(videoView)
         videoCamera?.startCameraCapture()
     }
     
