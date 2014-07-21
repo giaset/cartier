@@ -12,41 +12,16 @@
 		68691CBA19774D5B00C66C4E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68691CB919774D5B00C66C4E /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		6800949F197734230077F01B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 68009489197734230077F01B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 68009490197734230077F01B;
-			remoteInfo = Cartier;
-		};
-		68C26235197753B30046C0CC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 68009489197734230077F01B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 68009490197734230077F01B;
-			remoteInfo = Cartier;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		68009491197734230077F01B /* Cartier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cartier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68009495197734230077F01B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68009496197734230077F01B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68009498197734230077F01B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6800949E197734230077F01B /* CartierTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartierTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68691CB919774D5B00C66C4E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		6800948E197734230077F01B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6800949B197734230077F01B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -68,7 +43,6 @@
 			isa = PBXGroup;
 			children = (
 				68009491197734230077F01B /* Cartier.app */,
-				6800949E197734230077F01B /* CartierTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,25 +86,6 @@
 			productReference = 68009491197734230077F01B /* Cartier.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6800949D197734230077F01B /* CartierTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 680094AB197734230077F01B /* Build configuration list for PBXNativeTarget "CartierTests" */;
-			buildPhases = (
-				6800949A197734230077F01B /* Sources */,
-				6800949B197734230077F01B /* Frameworks */,
-				6800949C197734230077F01B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				680094A0197734230077F01B /* PBXTargetDependency */,
-				68C26236197753B30046C0CC /* PBXTargetDependency */,
-			);
-			name = CartierTests;
-			productName = CartierTests;
-			productReference = 6800949E197734230077F01B /* CartierTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -142,10 +97,6 @@
 				TargetAttributes = {
 					68009490197734230077F01B = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					6800949D197734230077F01B = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 68009490197734230077F01B;
 					};
 				};
 			};
@@ -162,7 +113,6 @@
 			projectRoot = "";
 			targets = (
 				68009490197734230077F01B /* Cartier */,
-				6800949D197734230077F01B /* CartierTests */,
 			);
 		};
 /* End PBXProject section */
@@ -173,13 +123,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				68009499197734230077F01B /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6800949C197734230077F01B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,27 +138,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6800949A197734230077F01B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		680094A0197734230077F01B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 68009490197734230077F01B /* Cartier */;
-			targetProxy = 6800949F197734230077F01B /* PBXContainerItemProxy */;
-		};
-		68C26236197753B30046C0CC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 68009490197734230077F01B /* Cartier */;
-			targetProxy = 68C26235197753B30046C0CC /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		680094A6197734230077F01B /* Debug */ = {
@@ -319,42 +242,6 @@
 			};
 			name = Release;
 		};
-		680094AC197734230077F01B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Cartier.app/Cartier";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CartierTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				METAL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Debug;
-		};
-		680094AD197734230077F01B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Cartier.app/Cartier";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CartierTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				METAL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -372,15 +259,6 @@
 			buildConfigurations = (
 				680094A9197734230077F01B /* Debug */,
 				680094AA197734230077F01B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		680094AB197734230077F01B /* Build configuration list for PBXNativeTarget "CartierTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				680094AC197734230077F01B /* Debug */,
-				680094AD197734230077F01B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
