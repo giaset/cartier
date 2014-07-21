@@ -13,7 +13,7 @@ import GPUImage
 class MainViewController: UIViewController {
     
     var videoCamera:GPUImageVideoCamera?
-    var filter:GPUImagePixellateFilter?
+    var overlayView:UIView?
     var videoView:GPUImageView?
     
     override func viewDidLoad() {
@@ -23,17 +23,20 @@ class MainViewController: UIViewController {
         self.title = "Cartier"
         
         // Initialize the camera
-        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
+        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
         videoCamera!.outputImageOrientation = .Portrait
         
-        // Initialize the filter
-        filter = GPUImagePixellateFilter()
-        videoCamera?.addTarget(filter)
-        
-        // Create our view, add it as a target of our filter, and star the camera!
+        // Create our video view
         videoView = GPUImageView(frame: self.view.frame)
         self.view.addSubview(videoView)
-        filter?.addTarget(videoView)
+        
+        // Create white overlay view
+        overlayView = UIView(frame: self.view.frame)
+        overlayView!.backgroundColor = UIColor.whiteColor()
+        overlayView!.alpha = 0.6;
+        self.view.addSubview(overlayView)
+        
+        videoCamera?.addTarget(videoView)
         videoCamera?.startCameraCapture()
     }
     
