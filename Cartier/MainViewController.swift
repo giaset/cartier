@@ -19,8 +19,13 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.whiteColor()
         self.title = "Cartier"
+        
+        setupLiveBlurBackground()
+    }
+    
+    func setupLiveBlurBackground() {
+        self.view.backgroundColor = UIColor.whiteColor()
         
         // Initialize the camera
         videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
@@ -29,8 +34,8 @@ class MainViewController: UIViewController {
         // Create the video view
         videoView = GPUImageView(frame: self.view.frame)
         self.view.addSubview(videoView)
-                
-        // Create the Gaussian blur filter
+        
+        // Create the iOS blur filter
         iosBlurFilter = GPUImageiOSBlurFilter()
         
         // Link everything together and start the camera capture!
