@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     var videoCamera: GPUImageVideoCamera?
     var videoView: GPUImageView?
     var iosBlurFilter: GPUImageiOSBlurFilter?
+    var coloredOverlayView: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +30,14 @@ class MainViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     func setupLiveBlurBackground() {
         // Setup the camera
         videoCamera!.outputImageOrientation = .Portrait
+        //videoCamera!.inputCamera.focusMode = AVCaptureFocusMode
         
         // Create the video view
         videoView = GPUImageView(frame: self.view.frame)
@@ -39,6 +45,14 @@ class MainViewController: UIViewController {
         
         // Create the iOS blur filter
         iosBlurFilter = GPUImageiOSBlurFilter()
+        iosBlurFilter!.rangeReductionFactor = 0.0
+        iosBlurFilter!.blurRadiusInPixels = 6.0
+        
+        // Create the colored overlay view over top of everything
+        coloredOverlayView = UIView(frame: self.view.frame)
+        coloredOverlayView!.backgroundColor = UIColor.blueColor()
+        coloredOverlayView!.alpha = 0.2
+        self.view.addSubview(coloredOverlayView)
         
         // Link everything together and start the camera capture!
         videoCamera?.addTarget(iosBlurFilter)
