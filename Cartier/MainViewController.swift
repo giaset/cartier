@@ -12,9 +12,9 @@ import GPUImage
 
 class MainViewController: UIViewController {
     
-    var videoCamera:GPUImageVideoCamera?
-    var videoView:GPUImageView?
-    var iosBlurFilter:GPUImageiOSBlurFilter?
+    var videoCamera: GPUImageVideoCamera?
+    var videoView: GPUImageView?
+    var iosBlurFilter: GPUImageiOSBlurFilter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class MainViewController: UIViewController {
         
         videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
         
-        if (videoCamera) {
+        if videoCamera {
             setupLiveBlurBackground()
         }
     }
