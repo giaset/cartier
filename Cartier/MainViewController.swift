@@ -20,15 +20,17 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Cartier"
+        self.view.backgroundColor = UIColor.whiteColor()
         
-        setupLiveBlurBackground()
+        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
+        
+        if (videoCamera) {
+            setupLiveBlurBackground()
+        }
     }
     
     func setupLiveBlurBackground() {
-        self.view.backgroundColor = UIColor.whiteColor()
-        
-        // Initialize the camera
-        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
+        // Setup the camera
         videoCamera!.outputImageOrientation = .Portrait
         
         // Create the video view
