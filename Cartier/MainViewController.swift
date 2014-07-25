@@ -20,8 +20,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Cartier"
         self.view.backgroundColor = UIColor.whiteColor()
+        self.navigationController.navigationBarHidden = true
         
         videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
         
@@ -50,8 +50,8 @@ class MainViewController: UIViewController {
         
         // Create the colored overlay view over top of everything
         coloredOverlayView = UIView(frame: self.view.frame)
-        coloredOverlayView!.backgroundColor = UIColor.blueColor()
-        coloredOverlayView!.alpha = 0.2
+        coloredOverlayView!.backgroundColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: 1)
+        //coloredOverlayView!.alpha = 0.2
         self.view.addSubview(coloredOverlayView)
         
         // Link everything together and start the camera capture!
