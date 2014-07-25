@@ -65,7 +65,7 @@ class MainViewController: UIViewController {
     }
     
     func setupSwitchAndSliders() {
-        var backgroundSwitch = UISwitch(frame: CGRectMake(0.0, 25.0, 0.0, 0.0)) //size components are ignored
+        var backgroundSwitch = UISwitch(frame: CGRectMake(0.0, 20.0+10.0, 0.0, 0.0)) //size components are ignored
         var modifiedFrame = backgroundSwitch.frame
         modifiedFrame.origin.x = self.view.frame.width - modifiedFrame.width - 5.0
         backgroundSwitch.frame = modifiedFrame
@@ -78,6 +78,6 @@ class MainViewController: UIViewController {
     }
     
     func switchChanged(backgroundSwitch: UISwitch) {
-        coloredOverlayView!.hidden = !backgroundSwitch.on
+        UIView.animateWithDuration(1.0, animations: { self.coloredOverlayView!.hidden = !backgroundSwitch.on })
     }
 }
