@@ -5,27 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>C76EFAEE-21FF-48BB-858F-87E98C20FADB</string>
+	<string>B1DC867D-73F8-40E1-8428-7D1057043104</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Cartier</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9BEA9A5F-4C52-4E56-B6D9-6DDCE606F85D</key>
+		<string>https://github.com/giaset/cartier.git</string>
+	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Cartier.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>AF0F1CA0-5B90-4D45-A77D-B457352F7EB3</key>
+		<key>9BEA9A5F-4C52-4E56-B6D9-6DDCE606F85D</key>
 		<string>../..</string>
 	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/giaset/cartier.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>AF0F1CA0-5B90-4D45-A77D-B457352F7EB3</string>
+	<string>9BEA9A5F-4C52-4E56-B6D9-6DDCE606F85D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>AF0F1CA0-5B90-4D45-A77D-B457352F7EB3</string>
+			<string>9BEA9A5F-4C52-4E56-B6D9-6DDCE606F85D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Cartier</string>
 		</dict>
