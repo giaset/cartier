@@ -78,6 +78,6 @@ class MainViewController: UIViewController {
     }
     
     func switchChanged(backgroundSwitch: UISwitch) {
-        UIView.animateWithDuration(1.0, animations: { self.coloredOverlayView!.hidden = !backgroundSwitch.on })
+        UIView.animateWithDuration(1.0, animations: { self.coloredOverlayView!.alpha = backgroundSwitch.on ? 0.6 : 0.0 })
     }
 }
