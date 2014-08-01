@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import GPUImage
+import QuartzCore
 
 class MainViewController: UIViewController {
     
@@ -21,6 +22,8 @@ class MainViewController: UIViewController {
     
     var opacitySlider: UISlider?
     
+    var circle: CAShapeLayer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,11 +31,12 @@ class MainViewController: UIViewController {
         
         videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
         
-        setupBackgroundView()
+        //setupBackgroundView()
+        setupCircle()
         
         if videoCamera {
             setupLiveBlurBackground()
-            setupSwitchAndSliders()
+            //setupSwitchAndSliders()
         }
     }
     
@@ -59,7 +63,7 @@ class MainViewController: UIViewController {
         
         // Create the iOS blur filter
         iosBlurFilter = GPUImageiOSBlurFilter()
-        iosBlurFilter!.rangeReductionFactor = 0.0
+        //iosBlurFilter!.rangeReductionFactor = 0.0
         iosBlurFilter!.blurRadiusInPixels = 6.0
         
         // Link everything together and start the camera capture!
@@ -91,6 +95,31 @@ class MainViewController: UIViewController {
         opacitySlider!.addTarget(self, action: "opacitySliderChanged", forControlEvents: .ValueChanged)
         self.view.addSubview(opacitySlider)
         println("opacitySlider.frame = \(opacitySlider!.frame)")
+    }
+    
+    func setupCircle() {
+        let radius: Float = 75
+        
+        circle = CAShapeLayer()
+        circle!.path = UIBezierPath(roundedRect: CGRectMake(0, 0, 2*radius, 2*radius), cornerRadius: radius).CGPath
+        circle!.fillColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: 0.6).CGColor
+        
+        // Center the circle
+        circle!.position = CGPointMake(CGRectGetMidX(self.view.frame)-radius, CGRectGetMidY(self.view.frame)-radius)
+        
+        self.view.layer.addSublayer(circle)
+        
+        // Handle clicks
+        var singleTap = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
+        self.view.addGestureRecognizer(singleTap)
+    }
+    
+    func handleSingleTap(sender: UITapGestureRecognizer) {
+        if circle!.containsPoint(sender.locationInView(self.view)) {
+            println("YES")
+        } else {
+            println("NO")
+        }
     }
     
     func switchChanged(backgroundSwitch: UISwitch) {
