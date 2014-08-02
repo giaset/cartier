@@ -12,6 +12,7 @@
 		68691CBA19774D5B00C66C4E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68691CB919774D5B00C66C4E /* MainViewController.swift */; };
 		68DA7AF2197CF3B200B319AE /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68DA7AEF197CF37F00B319AE /* GPUImage.framework */; };
 		68DA7AF4197CF9A900B319AE /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 68DA7AEF197CF37F00B319AE /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		68E8CD20198DA92600E275BD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E8CD1F198DA92500E275BD /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		68009498197734230077F01B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		68691CB919774D5B00C66C4E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		68DA7ADD197CF36300B319AE /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = "../GPUImage-master/framework/GPUImage.xcodeproj"; sourceTree = "<group>"; };
+		68E8CD1F198DA92500E275BD /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				68009498197734230077F01B /* Images.xcassets */,
 				68009494197734230077F01B /* Supporting Files */,
 				68691CB919774D5B00C66C4E /* MainViewController.swift */,
+				68E8CD1F198DA92500E275BD /* DetailViewController.swift */,
 			);
 			path = Cartier;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68E8CD20198DA92600E275BD /* DetailViewController.swift in Sources */,
 				68009497197734230077F01B /* AppDelegate.swift in Sources */,
 				68691CBA19774D5B00C66C4E /* MainViewController.swift in Sources */,
 			);

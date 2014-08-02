@@ -28,8 +28,6 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController.navigationBarHidden = true
-        
         videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
         
         //setupBackgroundView()
@@ -43,6 +41,8 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationController.navigationBarHidden = true
     }
     
     func setupBackgroundView() {
@@ -120,14 +120,24 @@ class MainViewController: UIViewController {
     
     func growCircle() {
         var growAnimation = CABasicAnimation(keyPath: "transform.scale")
-        growAnimation.duration = 3
+        growAnimation.duration = 2
         growAnimation.toValue = 5
         growAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         growAnimation.fillMode = kCAFillModeForwards
         growAnimation.removedOnCompletion = false
+        growAnimation.delegate = self
         
         circle!.layer.addAnimation(growAnimation, forKey: "growCircleAnimation")
         circleAnimating = true
+    }
+    
+    override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+        UIView.animateWithDuration(1.5, animations: {
+            self.circle!.backgroundColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: 1)
+            }, completion: {
+                didFinish in
+                self.navigationController.pushViewController(DetailViewController(), animated: false)
+            })
     }
 
     func switchChanged(backgroundSwitch: UISwitch) {
