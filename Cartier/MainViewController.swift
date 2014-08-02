@@ -23,6 +23,7 @@ class MainViewController: UIViewController {
     var opacitySlider: UISlider?
     
     var circle: UIView?
+    var circleAnimating = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,7 +113,9 @@ class MainViewController: UIViewController {
     }
     
     func handleSingleTap(sender: UITapGestureRecognizer) {
-        growCircle()
+        if !circleAnimating {
+            growCircle()
+        }
     }
     
     func growCircle() {
@@ -120,8 +123,11 @@ class MainViewController: UIViewController {
         growAnimation.duration = 3
         growAnimation.toValue = 5
         growAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        growAnimation.fillMode = kCAFillModeForwards
+        growAnimation.removedOnCompletion = false
         
         circle!.layer.addAnimation(growAnimation, forKey: "growCircleAnimation")
+        circleAnimating = true
     }
 
     func switchChanged(backgroundSwitch: UISwitch) {
