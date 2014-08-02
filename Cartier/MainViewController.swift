@@ -63,7 +63,7 @@ class MainViewController: UIViewController {
         
         // Create the iOS blur filter
         iosBlurFilter = GPUImageiOSBlurFilter()
-        //iosBlurFilter!.rangeReductionFactor = 0.0
+        iosBlurFilter!.rangeReductionFactor = 0.0
         iosBlurFilter!.blurRadiusInPixels = 6.0
         
         // Link everything together and start the camera capture!
@@ -102,7 +102,7 @@ class MainViewController: UIViewController {
         
         circle = CAShapeLayer()
         circle!.path = UIBezierPath(roundedRect: CGRectMake(0, 0, 2*radius, 2*radius), cornerRadius: radius).CGPath
-        circle!.fillColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: 0.6).CGColor
+        circle!.fillColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: 0.8).CGColor
         
         // Center the circle
         circle!.position = CGPointMake(CGRectGetMidX(self.view.frame)-radius, CGRectGetMidY(self.view.frame)-radius)
