@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
     
     var opacitySlider: UISlider?
     
-    var circle: CAShapeLayer?
+    var circle: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,18 +100,15 @@ class MainViewController: UIViewController {
     func setupCircle() {
         let radius: Float = 75
         
-        var circleView = UIView(frame: CGRectMake(CGRectGetMidX(self.view.frame)-radius, CGRectGetMidY(self.view.frame)-radius, 2*radius, 2*radius))
+        circle = UIView(frame: CGRectMake(CGRectGetMidX(self.view.frame)-radius, CGRectGetMidY(self.view.frame)-radius, 2*radius, 2*radius))
+        circle!.backgroundColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: 0.8)
+        circle!.layer.cornerRadius = radius
         
-        circle = CAShapeLayer()
-        circle!.path = UIBezierPath(roundedRect: CGRectMake(0, 0, 2*radius, 2*radius), cornerRadius: radius).CGPath
-        circle!.fillColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: 0.8).CGColor
-        circleView.layer.addSublayer(circle)
-        
-        self.view.addSubview(circleView)
+        self.view.addSubview(circle)
         
         // Handle clicks on circleView
         var singleTap = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
-        circleView.addGestureRecognizer(singleTap)
+        circle!.addGestureRecognizer(singleTap)
     }
     
     func handleSingleTap(sender: UITapGestureRecognizer) {
@@ -124,7 +121,7 @@ class MainViewController: UIViewController {
         growAnimation.toValue = 5
         growAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         
-        circle!.addAnimation(growAnimation, forKey: "growCircleAnimation")
+        circle!.layer.addAnimation(growAnimation, forKey: "growCircleAnimation")
     }
 
     func switchChanged(backgroundSwitch: UISwitch) {
