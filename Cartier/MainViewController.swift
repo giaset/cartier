@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
     
     var opacitySlider: UISlider?
     
-    var circleView: UIView?
+    var circle: CAShapeLayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,26 +100,34 @@ class MainViewController: UIViewController {
     func setupCircle() {
         let radius: Float = 75
         
-        circleView = UIView(frame: CGRectMake(0, 0, 2*radius, 2*radius))
+        var circleView = UIView(frame: CGRectMake(0, 0, 2*radius, 2*radius))
         
-        var circle = CAShapeLayer()
-        circle.path = UIBezierPath(roundedRect: CGRectMake(0, 0, 2*radius, 2*radius), cornerRadius: radius).CGPath
-        circle.fillColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: 0.8).CGColor
-        circleView!.layer.addSublayer(circle)
+        circle = CAShapeLayer()
+        circle!.path = UIBezierPath(roundedRect: CGRectMake(0, 0, 2*radius, 2*radius), cornerRadius: radius).CGPath
+        circle!.fillColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: 0.8).CGColor
+        circleView.layer.addSublayer(circle)
         
-        circleView!.frame.origin = CGPointMake(CGRectGetMidX(self.view.frame)-radius, CGRectGetMidY(self.view.frame)-radius)
+        circleView.frame.origin = CGPointMake(CGRectGetMidX(self.view.frame)-radius, CGRectGetMidY(self.view.frame)-radius)
         
         self.view.addSubview(circleView)
         
-        // Handle clicks
+        // Handle clicks on circleView
         var singleTap = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
-        circleView!.addGestureRecognizer(singleTap)
+        circleView.addGestureRecognizer(singleTap)
     }
     
     func handleSingleTap(sender: UITapGestureRecognizer) {
-        println("YES")
+        growCircle()
     }
     
+    func growCircle() {
+        var growAnimation = CABasicAnimation(keyPath: "transform.scale")
+        growAnimation.duration = 3
+        growAnimation.toValue = 5
+        
+        circle!.addAnimation(growAnimation, forKey: nil)
+    }
+
     func switchChanged(backgroundSwitch: UISwitch) {
         UIView.animateWithDuration(1.0, animations: {
             self.coloredOverlayView!.alpha = backgroundSwitch.on ? self.backgroundOpacity : 0.0
