@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
     
     var opacitySlider: UISlider?
     
-    var circle: CAShapeLayer?
+    var circleView: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,26 +100,24 @@ class MainViewController: UIViewController {
     func setupCircle() {
         let radius: Float = 75
         
-        circle = CAShapeLayer()
-        circle!.path = UIBezierPath(roundedRect: CGRectMake(0, 0, 2*radius, 2*radius), cornerRadius: radius).CGPath
-        circle!.fillColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: 0.8).CGColor
+        circleView = UIView(frame: CGRectMake(0, 0, 2*radius, 2*radius))
         
-        // Center the circle
-        circle!.position = CGPointMake(CGRectGetMidX(self.view.frame)-radius, CGRectGetMidY(self.view.frame)-radius)
+        var circle = CAShapeLayer()
+        circle.path = UIBezierPath(roundedRect: CGRectMake(0, 0, 2*radius, 2*radius), cornerRadius: radius).CGPath
+        circle.fillColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: 0.8).CGColor
+        circleView!.layer.addSublayer(circle)
         
-        self.view.layer.addSublayer(circle)
+        circleView!.frame.origin = CGPointMake(CGRectGetMidX(self.view.frame)-radius, CGRectGetMidY(self.view.frame)-radius)
+        
+        self.view.addSubview(circleView)
         
         // Handle clicks
         var singleTap = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
-        self.view.addGestureRecognizer(singleTap)
+        circleView!.addGestureRecognizer(singleTap)
     }
     
     func handleSingleTap(sender: UITapGestureRecognizer) {
-        if circle!.containsPoint(sender.locationInView(self.view)) {
-            println("YES")
-        } else {
-            println("NO")
-        }
+        println("YES")
     }
     
     func switchChanged(backgroundSwitch: UISwitch) {
