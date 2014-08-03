@@ -54,7 +54,7 @@ class MainViewController: UIViewController {
         super.viewDidAppear(animated)
         
         if !circleIsNormalSize {
-            UIView.animateWithDuration(circleAnimDuration, animations: {
+            UIView.animateWithDuration(1.2, animations: {
                 self.setCircleAlphaTo(self.circleAlpha)
                 }, completion: {
                     didFinish in
@@ -82,8 +82,8 @@ class MainViewController: UIViewController {
         
         // Create the iOS blur filter
         iosBlurFilter = GPUImageiOSBlurFilter()
-        iosBlurFilter!.rangeReductionFactor = 0.3
-        //iosBlurFilter!.blurRadiusInPixels = 6.0
+        iosBlurFilter!.rangeReductionFactor = 0.0
+        iosBlurFilter!.blurRadiusInPixels = 6.0
         
         // Link everything together and start the camera capture!
         videoCamera?.addTarget(iosBlurFilter)
@@ -162,7 +162,7 @@ class MainViewController: UIViewController {
     override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
         let basicAnim = anim as CABasicAnimation
         if (basicAnim.toValue as Float == 5) {
-            UIView.animateWithDuration(circleAnimDuration, animations: {
+            UIView.animateWithDuration(1.2, animations: {
                 self.setCircleAlphaTo(1)
                 }, completion: {
                     didFinish in
