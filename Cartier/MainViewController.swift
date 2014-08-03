@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
     var opacitySlider: UISlider?
     
     var circle: UIView?
-    var circleAnimating = false
+    var circleIsNormalSize = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +43,12 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationController.navigationBarHidden = true
+        
+        if !circleIsNormalSize {
+            setCircleAlphaTo(0.8, completionBlock: {
+                self.shrinkCircle()
+                })
+        }
     }
     
     func setupBackgroundView() {
@@ -102,7 +108,7 @@ class MainViewController: UIViewController {
         let radius: Float = 75
         
         circle = UIView(frame: CGRectMake(CGRectGetMidX(self.view.frame)-radius, CGRectGetMidY(self.view.frame)-radius, 2*radius, 2*radius))
-        circle!.backgroundColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: 0.8)
+        setCircleAlphaTo(0.8, completionBlock: nil)
         circle!.layer.cornerRadius = radius
         
         self.view.addSubview(circle)
@@ -113,30 +119,55 @@ class MainViewController: UIViewController {
     }
     
     func handleSingleTap(sender: UITapGestureRecognizer) {
-        if !circleAnimating {
+        if circleIsNormalSize {
             growCircle()
         }
     }
     
     func growCircle() {
         var growAnimation = CABasicAnimation(keyPath: "transform.scale")
-        growAnimation.duration = 2
+        growAnimation.duration = 1.5
         growAnimation.toValue = 5
-        growAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        growAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         growAnimation.fillMode = kCAFillModeForwards
         growAnimation.removedOnCompletion = false
         growAnimation.delegate = self
         
-        circle!.layer.addAnimation(growAnimation, forKey: "growCircleAnimation")
-        circleAnimating = true
+        circle!.layer.addAnimation(growAnimation, forKey: "growAnimation")
+        circleIsNormalSize = false
+    }
+    
+    func shrinkCircle() {
+        var shrinkAnimation = CABasicAnimation(keyPath: "transform.scale")
+        shrinkAnimation.duration = 1
+        shrinkAnimation.toValue = 1
+        shrinkAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        shrinkAnimation.fillMode = kCAFillModeForwards
+        shrinkAnimation.removedOnCompletion = false
+        shrinkAnimation.delegate = self
+        
+        circle!.layer.addAnimation(shrinkAnimation, forKey: "shrinkAnimation")
     }
     
     override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+        let basicAnim = anim as CABasicAnimation
+        if (basicAnim.toValue as Float == 5) {
+            setCircleAlphaTo(1, completionBlock: {
+                self.navigationController.pushViewController(DetailViewController(), animated: false)
+                })
+        } else if (basicAnim.toValue as Float == 1) {
+            circleIsNormalSize = true
+        }
+    }
+    
+    func setCircleAlphaTo(newAlpha: CGFloat, completionBlock: (() -> ())?) {
         UIView.animateWithDuration(1.5, animations: {
-            self.circle!.backgroundColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: 1)
+            self.circle!.backgroundColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: newAlpha)
             }, completion: {
                 didFinish in
-                self.navigationController.pushViewController(DetailViewController(), animated: false)
+                if (completionBlock) {
+                    completionBlock!()
+                }
             })
     }
 
