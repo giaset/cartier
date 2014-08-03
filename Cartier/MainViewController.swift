@@ -13,6 +13,11 @@ import QuartzCore
 
 class MainViewController: UIViewController {
     
+    /* Constants */
+    let circleRadius: Float = 75
+    let circleAnimDuration = 0.5
+    let circleAlpha: Float = 0.8
+    
     var backgroundOpacity: Float = 0.6
     
     var videoCamera: GPUImageVideoCamera?
@@ -45,9 +50,8 @@ class MainViewController: UIViewController {
         self.navigationController.navigationBarHidden = true
         
         if !circleIsNormalSize {
-            setCircleAlphaTo(0.8, completionBlock: {
-                self.shrinkCircle()
-                })
+            setCircleAlphaTo(circleAlpha)
+            shrinkCircle()
         }
     }
     
@@ -105,11 +109,9 @@ class MainViewController: UIViewController {
     }
     
     func setupCircle() {
-        let radius: Float = 75
-        
-        circle = UIView(frame: CGRectMake(CGRectGetMidX(self.view.frame)-radius, CGRectGetMidY(self.view.frame)-radius, 2*radius, 2*radius))
-        setCircleAlphaTo(0.8, completionBlock: nil)
-        circle!.layer.cornerRadius = radius
+        circle = UIView(frame: CGRectMake(CGRectGetMidX(self.view.frame)-circleRadius, CGRectGetMidY(self.view.frame)-circleRadius, 2*circleRadius, 2*circleRadius))
+        setCircleAlphaTo(circleAlpha)
+        circle!.layer.cornerRadius = circleRadius
         
         self.view.addSubview(circle)
         
@@ -126,7 +128,7 @@ class MainViewController: UIViewController {
     
     func growCircle() {
         var growAnimation = CABasicAnimation(keyPath: "transform.scale")
-        growAnimation.duration = 1
+        growAnimation.duration = circleAnimDuration
         growAnimation.toValue = 5
         growAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         growAnimation.fillMode = kCAFillModeForwards
@@ -139,7 +141,7 @@ class MainViewController: UIViewController {
     
     func shrinkCircle() {
         var shrinkAnimation = CABasicAnimation(keyPath: "transform.scale")
-        shrinkAnimation.duration = 1
+        shrinkAnimation.duration = circleAnimDuration
         shrinkAnimation.toValue = 1
         shrinkAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         shrinkAnimation.fillMode = kCAFillModeForwards
@@ -152,24 +154,16 @@ class MainViewController: UIViewController {
     override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
         let basicAnim = anim as CABasicAnimation
         if (basicAnim.toValue as Float == 5) {
-            setCircleAlphaTo(1, completionBlock: {
-                var detailViewController = DetailViewController(style: .Grouped)
-                self.navigationController.pushViewController(detailViewController, animated: false)
-                })
+            setCircleAlphaTo(1)
+            var detailViewController = DetailViewController(style: .Grouped)
+            self.navigationController.pushViewController(detailViewController, animated: false)
         } else if (basicAnim.toValue as Float == 1) {
             circleIsNormalSize = true
         }
     }
     
-    func setCircleAlphaTo(newAlpha: CGFloat, completionBlock: (() -> ())?) {
-        UIView.animateWithDuration(1, animations: {
-            self.circle!.backgroundColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: newAlpha)
-            }, completion: {
-                didFinish in
-                if (completionBlock) {
-                    completionBlock!()
-                }
-            })
+    func setCircleAlphaTo(newAlpha: CGFloat) {
+        self.circle!.backgroundColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: newAlpha)
     }
 
     func switchChanged(backgroundSwitch: UISwitch) {
