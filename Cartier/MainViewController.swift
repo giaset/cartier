@@ -15,8 +15,8 @@ class MainViewController: UIViewController {
     
     /* Constants */
     let circleRadius: Float = 75
-    let circleAnimDuration = 0.5
-    let circleAlpha: Float = 0.8
+    let circleAnimDuration = 0.3
+    let circleAlpha: Float = 0.6
     
     var backgroundOpacity: Float = 0.6
     
@@ -48,10 +48,18 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationController.navigationBarHidden = true
+    }
+    
+    override func viewDidAppear(animated: Bool)  {
+        super.viewDidAppear(animated)
         
         if !circleIsNormalSize {
-            setCircleAlphaTo(circleAlpha)
-            shrinkCircle()
+            UIView.animateWithDuration(circleAnimDuration, animations: {
+                self.setCircleAlphaTo(self.circleAlpha)
+                }, completion: {
+                    didFinish in
+                    self.shrinkCircle()
+                })
         }
     }
     
@@ -74,8 +82,8 @@ class MainViewController: UIViewController {
         
         // Create the iOS blur filter
         iosBlurFilter = GPUImageiOSBlurFilter()
-        iosBlurFilter!.rangeReductionFactor = 0.0
-        iosBlurFilter!.blurRadiusInPixels = 6.0
+        iosBlurFilter!.rangeReductionFactor = 0.3
+        //iosBlurFilter!.blurRadiusInPixels = 6.0
         
         // Link everything together and start the camera capture!
         videoCamera?.addTarget(iosBlurFilter)
@@ -154,9 +162,13 @@ class MainViewController: UIViewController {
     override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
         let basicAnim = anim as CABasicAnimation
         if (basicAnim.toValue as Float == 5) {
-            setCircleAlphaTo(1)
-            var detailViewController = DetailViewController(style: .Grouped)
-            self.navigationController.pushViewController(detailViewController, animated: false)
+            UIView.animateWithDuration(circleAnimDuration, animations: {
+                self.setCircleAlphaTo(1)
+                }, completion: {
+                    didFinish in
+                    var detailViewController = DetailViewController(style: .Grouped)
+                    self.navigationController.pushViewController(detailViewController, animated: false)
+                })
         } else if (basicAnim.toValue as Float == 1) {
             circleIsNormalSize = true
         }
