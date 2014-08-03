@@ -31,6 +31,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     var circleIsNormalSize = true
     
     var locationManager = CLLocationManager()
+    let afNetworkingManager = AFHTTPRequestOperationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -170,10 +171,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         if (basicAnim.toValue as Float == 5) {
             UIView.animateWithDuration(1.2, animations: {
                 self.setCircleAlphaTo(1)
-                }, completion: {
-                    didFinish in
-                    var detailViewController = DetailViewController(style: .Grouped)
-                    self.navigationController.pushViewController(detailViewController, animated: false)
                 })
         } else if (basicAnim.toValue as Float == 1) {
             circleIsNormalSize = true
@@ -186,8 +183,22 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: AnyObject[]) {
         locationManager.stopUpdatingLocation()
+        
         var userLocation: CLLocation = locations[locations.endIndex - 1] as CLLocation
-        println(userLocation)
+        
+        // Find foursquare places around here
+        var urlString = "https://api.foursquare.com/v2/venues/explore?client_id=35UH1ZRV1LML4OMHUNV2CISGII0GHFILV3Z1CHDBQB5WHIO1&client_secret=5NCVL2KJG5WDNS4KX2ZR5SVP3UDMFJNZL04LSHJLLDL5ZY0G&ll=\(userLocation.coordinate.latitude),\(userLocation.coordinate.longitude)&v=20140803"
+        afNetworkingManager.GET(urlString, parameters: nil, success: {
+            (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
+            let responseDict = responseObject as Dictionary<String, AnyObject>
+            let subDict = responseDict["response"] as Dictionary<String, AnyObject>?
+            //let subDict2 : AnyObject? = subDict["groups"]
+            //let subDict3 : AnyObject? =
+            //println(responseDict["response"].
+            
+            var detailViewController = DetailViewController(style: .Grouped)
+            self.navigationController.pushViewController(detailViewController, animated: false)
+            }, failure: { operation, error in println(error) })
     }
 
     func switchChanged(backgroundSwitch: UISwitch) {
