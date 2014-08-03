@@ -17,6 +17,7 @@ class DetailViewController: UITableViewController {
         
         self.navigationController.navigationBar.barTintColor = UIColor.blackColor()
         self.navigationController.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController.navigationBar.translucent = false
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -25,4 +26,14 @@ class DetailViewController: UITableViewController {
         self.navigationController.navigationBarHidden = false
     }
     
+    override func tableView(tableView: UITableView!, heightForHeaderInSection section: Int) -> CGFloat {
+        return 250
+    }
+    
+    override func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
+        var headerView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 250))
+        headerView.backgroundColor = UIColor.blackColor()
+        
+        return headerView
+    }
 }

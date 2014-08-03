@@ -126,7 +126,7 @@ class MainViewController: UIViewController {
     
     func growCircle() {
         var growAnimation = CABasicAnimation(keyPath: "transform.scale")
-        growAnimation.duration = 1.5
+        growAnimation.duration = 1
         growAnimation.toValue = 5
         growAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         growAnimation.fillMode = kCAFillModeForwards
@@ -153,7 +153,8 @@ class MainViewController: UIViewController {
         let basicAnim = anim as CABasicAnimation
         if (basicAnim.toValue as Float == 5) {
             setCircleAlphaTo(1, completionBlock: {
-                self.navigationController.pushViewController(DetailViewController(style: .Grouped), animated: false)
+                var detailViewController = DetailViewController(style: .Grouped)
+                self.navigationController.pushViewController(detailViewController, animated: false)
                 })
         } else if (basicAnim.toValue as Float == 1) {
             circleIsNormalSize = true
@@ -161,7 +162,7 @@ class MainViewController: UIViewController {
     }
     
     func setCircleAlphaTo(newAlpha: CGFloat, completionBlock: (() -> ())?) {
-        UIView.animateWithDuration(1.5, animations: {
+        UIView.animateWithDuration(1, animations: {
             self.circle!.backgroundColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: newAlpha)
             }, completion: {
                 didFinish in
