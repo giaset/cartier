@@ -18,6 +18,14 @@ class DetailViewController: UITableViewController {
         self.navigationController.navigationBar.barTintColor = UIColor.blackColor()
         self.navigationController.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController.navigationBar.translucent = false
+        
+        // Set up custom back button
+        var backButton = UIBarButtonItem(title: "Back", style: .Bordered, target: self, action: "backButtonClicked")
+        self.navigationItem.leftBarButtonItem = backButton;
+    }
+    
+    func backButtonClicked() {
+        self.navigationController.popViewControllerAnimated(false)
     }
     
     override func viewWillAppear(animated: Bool) {
