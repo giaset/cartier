@@ -11,7 +11,7 @@ import CoreLocation
 import GPUImage
 import QuartzCore
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     /* Constants */
     let circleRadius: Float = 75
@@ -30,6 +30,8 @@ class MainViewController: UIViewController {
     var circle: UIView?
     var circleIsNormalSize = true
     
+    var locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,6 +44,9 @@ class MainViewController: UIViewController {
             setupLiveBlurBackground()
             //setupSwitchAndSliders()
         }
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -130,6 +135,7 @@ class MainViewController: UIViewController {
     
     func handleSingleTap(sender: UITapGestureRecognizer) {
         if circleIsNormalSize {
+            locationManager.startUpdatingLocation()
             growCircle()
         }
     }
@@ -176,6 +182,12 @@ class MainViewController: UIViewController {
     
     func setCircleAlphaTo(newAlpha: CGFloat) {
         self.circle!.backgroundColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: newAlpha)
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: AnyObject[]) {
+        locationManager.stopUpdatingLocation()
+        var userLocation: CLLocation = locations[locations.endIndex - 1] as CLLocation
+        println(userLocation)
     }
 
     func switchChanged(backgroundSwitch: UISwitch) {
