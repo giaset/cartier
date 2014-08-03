@@ -153,7 +153,7 @@ class MainViewController: UIViewController {
         let basicAnim = anim as CABasicAnimation
         if (basicAnim.toValue as Float == 5) {
             setCircleAlphaTo(1, completionBlock: {
-                self.navigationController.pushViewController(DetailViewController(), animated: false)
+                self.navigationController.pushViewController(DetailViewController(style: .Grouped), animated: false)
                 })
         } else if (basicAnim.toValue as Float == 1) {
             circleIsNormalSize = true
