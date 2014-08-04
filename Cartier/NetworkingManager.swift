@@ -27,7 +27,8 @@ class NetworkingManager {
         var urlString = "https://api.foursquare.com/v2/venues/explore?client_id=\(foursquareClientId)&client_secret=\(foursquareClientSecret)&ll=\(coordinates.latitude),\(coordinates.longitude)&v=\(foursquareVersion)"
         
         func success(operation: AFHTTPRequestOperation!, responseObject: AnyObject!) {
-            println(responseObject)
+            let responseDict = responseObject as Dictionary<String, AnyObject>
+            println(responseDict["response"])
         }
         
         afNetworkingManager.GET(urlString, parameters: nil, success: success, failure: nil)
@@ -42,7 +43,7 @@ class NetworkingManager {
     
 /*success: {
 (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
-let responseDict = responseObject as Dictionary<String, AnyObject>
+
 let subDict = responseDict["response"] as Dictionary<String, AnyObject>?
 //let subDict2 : AnyObject? = subDict["groups"]
 //let subDict3 : AnyObject? =
