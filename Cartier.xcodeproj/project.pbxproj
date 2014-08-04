@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		68009497197734230077F01B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68009496197734230077F01B /* AppDelegate.swift */; };
 		68009499197734230077F01B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68009498197734230077F01B /* Images.xcassets */; };
-		680E0B95198F5B0E00C77EAC /* NetworkingLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680E0B94198F5B0E00C77EAC /* NetworkingLogic.swift */; };
+		680E0B95198F5B0E00C77EAC /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680E0B94198F5B0E00C77EAC /* NetworkingManager.swift */; };
 		68691CBA19774D5B00C66C4E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68691CB919774D5B00C66C4E /* MainViewController.swift */; };
 		68DA7AF2197CF3B200B319AE /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68DA7AEF197CF37F00B319AE /* GPUImage.framework */; };
 		68DA7AF4197CF9A900B319AE /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 68DA7AEF197CF37F00B319AE /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -75,7 +75,7 @@
 		68009495197734230077F01B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68009496197734230077F01B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68009498197734230077F01B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		680E0B94198F5B0E00C77EAC /* NetworkingLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingLogic.swift; sourceTree = "<group>"; };
+		680E0B94198F5B0E00C77EAC /* NetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		68691CB919774D5B00C66C4E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		68DA7ADD197CF36300B319AE /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = "../GPUImage-master/framework/GPUImage.xcodeproj"; sourceTree = "<group>"; };
 		68E8CD1F198DA92500E275BD /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -156,8 +156,8 @@
 				68009498197734230077F01B /* Images.xcassets */,
 				68009494197734230077F01B /* Supporting Files */,
 				68691CB919774D5B00C66C4E /* MainViewController.swift */,
-				680E0B94198F5B0E00C77EAC /* NetworkingLogic.swift */,
 				68E8CD1F198DA92500E275BD /* DetailViewController.swift */,
+				680E0B94198F5B0E00C77EAC /* NetworkingManager.swift */,
 				68E8CD5A198EA5A200E275BD /* Cartier-Bridging-Header.h */,
 			);
 			path = Cartier;
@@ -324,7 +324,7 @@
 			files = (
 				68E8CD49198EA4E200E275BD /* AFHTTPRequestOperation.m in Sources */,
 				68E8CD56198EA4E200E275BD /* UIImageView+AFNetworking.m in Sources */,
-				680E0B95198F5B0E00C77EAC /* NetworkingLogic.swift in Sources */,
+				680E0B95198F5B0E00C77EAC /* NetworkingManager.swift in Sources */,
 				68E8CD20198DA92600E275BD /* DetailViewController.swift in Sources */,
 				68E8CD4A198EA4E200E275BD /* AFHTTPRequestOperationManager.m in Sources */,
 				68E8CD57198EA4E200E275BD /* UIProgressView+AFNetworking.m in Sources */,
