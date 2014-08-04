@@ -143,6 +143,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         var userLocation: CLLocation = locations[locations.endIndex - 1] as CLLocation
         
-        //NetworkingLogic.findFoursquarePlaces(afNetworkingManager, coordinates: userLocation.coordinate)
+        NetworkingLogic.findFoursquarePlaces(afNetworkingManager, coordinates: userLocation.coordinate)
     }
 }
