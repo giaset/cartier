@@ -57,7 +57,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 self.setCircleAlphaTo(self.circleAlpha)
                 }, completion: {
                     didFinish in
-                    self.shrinkCircle()
+                    self.scaleCircleTo(1)
                 })
         }
     }
@@ -98,33 +98,26 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     func handleSingleTap(sender: UITapGestureRecognizer) {
         if circleIsNormalSize {
             locationManager.startUpdatingLocation()
-            growCircle()
+            scaleCircleTo(5)
+            circleIsNormalSize = false
         }
     }
     
-    func growCircle() {
-        var growAnimation = CABasicAnimation(keyPath: "transform.scale")
-        growAnimation.duration = circleAnimDuration
-        growAnimation.toValue = 5
-        growAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-        growAnimation.fillMode = kCAFillModeForwards
-        growAnimation.removedOnCompletion = false
-        growAnimation.delegate = self
+    func scaleCircleTo(desiredScale: Float) {
+        var scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
+        scaleAnimation.duration = circleAnimDuration
+        scaleAnimation.toValue = desiredScale
+        scaleAnimation.fillMode = kCAFillModeForwards
+        scaleAnimation.removedOnCompletion = false
+        scaleAnimation.delegate = self
         
-        circle!.layer.addAnimation(growAnimation, forKey: "growAnimation")
-        circleIsNormalSize = false
-    }
-    
-    func shrinkCircle() {
-        var shrinkAnimation = CABasicAnimation(keyPath: "transform.scale")
-        shrinkAnimation.duration = circleAnimDuration
-        shrinkAnimation.toValue = 1
-        shrinkAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
-        shrinkAnimation.fillMode = kCAFillModeForwards
-        shrinkAnimation.removedOnCompletion = false
-        shrinkAnimation.delegate = self
-        
-        circle!.layer.addAnimation(shrinkAnimation, forKey: "shrinkAnimation")
+        if (desiredScale == 1) {
+            scaleAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+            circle!.layer.addAnimation(scaleAnimation, forKey: "shrinkAnimation")
+        } else {
+            scaleAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+            circle!.layer.addAnimation(scaleAnimation, forKey: "growAnimation")
+        }
     }
     
     override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
@@ -132,6 +125,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         if (basicAnim.toValue as Float == 5) {
             UIView.animateWithDuration(1.2, animations: {
                 self.setCircleAlphaTo(1)
+                }, completion: {
+                    didFinish in
+                    var detailViewController = DetailViewController(style: .Grouped)
+                    self.navigationController.pushViewController(detailViewController, animated: false)
                 })
         } else if (basicAnim.toValue as Float == 1) {
             circleIsNormalSize = true
@@ -146,6 +143,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         var userLocation: CLLocation = locations[locations.endIndex - 1] as CLLocation
         
-        NetworkingLogic.findFoursquarePlaces(afNetworkingManager, coordinates: userLocation.coordinate)
+        //NetworkingLogic.findFoursquarePlaces(afNetworkingManager, coordinates: userLocation.coordinate)
     }
 }
