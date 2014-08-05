@@ -38,11 +38,13 @@ class NetworkingManager: NSObject {
             println(responseDict["response"])
         }
         
-        afNetworkingManager.GET(urlString, parameters: nil, success: success, failure: nil)
+        afNetworkingManager.GET(urlString, parameters: nil, success: success, failure: popError)
     }
     
     func popError(operation: AFHTTPRequestOperation!, error: NSError!) {
-        var errorAlert = UIAlertView(title: "Network Error", message: error.description, delegate: nil, cancelButtonTitle: "Ok")
+        println(error.description)
+        
+        //var errorAlert = UIAlertView(title: "Network Error", message: error.description, delegate: self, cancelButtonTitle: "Ok")
         
         //errorAlert.show()
     }

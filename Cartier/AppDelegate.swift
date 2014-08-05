@@ -17,8 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-        
         UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
         
         let mainViewController = MainViewController()
