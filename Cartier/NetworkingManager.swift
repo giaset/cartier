@@ -22,6 +22,7 @@ class NetworkingManager: NSObject {
         afNetworkingManager.responseSerializer = AFJSONResponseSerializer()
     }
     
+    // From StackOverflow, how to handle Singletons in Swift
     class var sharedInstance: NetworkingManager {
         struct Static {
             static let instance: NetworkingManager = NetworkingManager()
@@ -30,7 +31,6 @@ class NetworkingManager: NSObject {
     }
     
     func findFoursquarePlaces(coordinates: CLLocationCoordinate2D) {
-        
         var urlString = "https://api.foursquare.com/v2/venues/explore?client_id=\(foursquareClientId)&client_secret=\(foursquareClientSecret)&ll=\(coordinates.latitude),\(coordinates.longitude)&v=\(foursquareVersion)"
         
         func success(operation: AFHTTPRequestOperation!, responseObject: AnyObject!) {
@@ -42,11 +42,13 @@ class NetworkingManager: NSObject {
     }
     
     func popError(operation: AFHTTPRequestOperation!, error: NSError!) {
-        println(error.description)
+        // Legacy support for UIAlertViews, which are deprecated starting in iOS8
+        var errorAlert = UIAlertView()
+        errorAlert.title = "Network Error"
+        errorAlert.message = error.description
+        errorAlert.addButtonWithTitle("Ok")
         
-        //var errorAlert = UIAlertView(title: "Network Error", message: error.description, delegate: self, cancelButtonTitle: "Ok")
-        
-        //errorAlert.show()
+        errorAlert.show()
     }
     
     
