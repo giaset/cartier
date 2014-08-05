@@ -18,9 +18,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     let circleAnimDuration = 0.3
     let circleAlpha: Float = 0.6
     
-    var videoCamera: GPUImageVideoCamera?
+    var videoCamera: GPUImageVideoCamera? = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
     var videoView: GPUImageView?
-    var iosBlurFilter: GPUImageiOSBlurFilter?
+    var iosBlurFilter = GPUImageiOSBlurFilter()
     
     var circle: UIView?
     var circleIsNormalSize = true
@@ -29,8 +29,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
         
         setupCircle()
         
@@ -72,13 +70,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         self.view.sendSubviewToBack(videoView)
         
         // Create the iOS blur filter
-        iosBlurFilter = GPUImageiOSBlurFilter()
-        iosBlurFilter!.rangeReductionFactor = 0.0
-        iosBlurFilter!.blurRadiusInPixels = 6.0
+        iosBlurFilter.rangeReductionFactor = 0.0
+        iosBlurFilter.blurRadiusInPixels = 6.0
         
         // Link everything together and start the camera capture!
         videoCamera?.addTarget(iosBlurFilter)
-        iosBlurFilter?.addTarget(videoView)
+        iosBlurFilter.addTarget(videoView)
         videoCamera?.startCameraCapture()
     }
     
