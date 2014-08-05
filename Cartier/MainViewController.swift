@@ -26,7 +26,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     var circleIsNormalSize = true
     
     var locationManager = CLLocationManager()
-    let afNetworkingManager = AFHTTPRequestOperationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,6 +142,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         var userLocation: CLLocation = locations[locations.endIndex - 1] as CLLocation
         
-        NetworkingManager.sharedInstance.findFoursquarePlaces(afNetworkingManager, coordinates: userLocation.coordinate)
+        NetworkingManager.sharedInstance.findFoursquarePlaces(userLocation.coordinate)
     }
 }

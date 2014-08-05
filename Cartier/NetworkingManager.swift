@@ -9,11 +9,18 @@
 import Foundation
 import CoreLocation
 
-class NetworkingManager {
+class NetworkingManager: NSObject {
+    
+    let afNetworkingManager: AFHTTPRequestOperationManager
     
     let foursquareClientId = "35UH1ZRV1LML4OMHUNV2CISGII0GHFILV3Z1CHDBQB5WHIO1"
     let foursquareClientSecret = "5NCVL2KJG5WDNS4KX2ZR5SVP3UDMFJNZL04LSHJLLDL5ZY0G"
     let foursquareVersion = "20140803"
+    
+    init() {
+        afNetworkingManager = AFHTTPRequestOperationManager()
+        afNetworkingManager.responseSerializer = AFJSONResponseSerializer()
+    }
     
     class var sharedInstance: NetworkingManager {
         struct Static {
@@ -22,7 +29,7 @@ class NetworkingManager {
         return Static.instance
     }
     
-    func findFoursquarePlaces(afNetworkingManager: AFHTTPRequestOperationManager, coordinates: CLLocationCoordinate2D) {
+    func findFoursquarePlaces(coordinates: CLLocationCoordinate2D) {
         
         var urlString = "https://api.foursquare.com/v2/venues/explore?client_id=\(foursquareClientId)&client_secret=\(foursquareClientSecret)&ll=\(coordinates.latitude),\(coordinates.longitude)&v=\(foursquareVersion)"
         
@@ -37,7 +44,7 @@ class NetworkingManager {
     func popError(operation: AFHTTPRequestOperation!, error: NSError!) {
         var errorAlert = UIAlertView(title: "Network Error", message: error.description, delegate: nil, cancelButtonTitle: "Ok")
         
-        errorAlert.show()
+        //errorAlert.show()
     }
     
     
