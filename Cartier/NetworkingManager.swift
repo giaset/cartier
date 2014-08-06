@@ -35,7 +35,12 @@ class NetworkingManager: NSObject {
         
         func success(operation: AFHTTPRequestOperation!, responseObject: AnyObject!) {
             let responseDict = responseObject as Dictionary<String, AnyObject>
-            println(responseDict["response"])
+            
+            let actualResponseDict: Dictionary<String, AnyObject>? = (responseDict["response"] as AnyObject?) as? Dictionary<String, AnyObject>
+            
+            let groupsDict: Dictionary<String, AnyObject>? = (actualResponseDict!["groups"] as AnyObject?) as? Dictionary<String, AnyObject>
+            
+            println(actualResponseDict)
         }
         
         afNetworkingManager.GET(urlString, parameters: nil, success: success, failure: popError)
@@ -51,14 +56,4 @@ class NetworkingManager: NSObject {
         errorAlert.show()
     }
     
-    
-/*success: {
-(operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
-
-let subDict = responseDict["response"] as Dictionary<String, AnyObject>?
-//let subDict2 : AnyObject? = subDict["groups"]
-//let subDict3 : AnyObject? =
-//println(responseDict["response"].
-*/
-
 }
