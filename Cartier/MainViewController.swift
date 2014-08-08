@@ -105,6 +105,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         // Handle clicks on circleView
         var singleTap = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
         circle!.addGestureRecognizer(singleTap)
+        
+        // Handle drags on circleView
+        var drag = UIPanGestureRecognizer(target: self, action: "handleDrag:")
+        circle!.addGestureRecognizer(drag)
     }
     
     func handleSingleTap(sender: UITapGestureRecognizer) {
@@ -112,6 +116,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
             scaleCircleTo(5)
             circleIsNormalSize = false
+        }
+    }
+    
+    func handleDrag(sender: UIPanGestureRecognizer) {
+        if circleIsNormalSize {
+            /*var newX = circle!.center.x + sender.translationInView(self.view).x
+            var newY = circle!.center.y + sender.translationInView(self.view).y
+            circle!.center = CGPointMake(newX, newY)*/
+            println(circle!.center)
         }
     }
     
