@@ -17,10 +17,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     let circleRadius: CGFloat = 75
     let circleAnimDuration = 0.3
     let circleAlpha: CGFloat = 0.6
+    let customBackgroundAlpha: CGFloat = 0.6
     
     var videoCamera: GPUImageVideoCamera? = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
     var videoView: GPUImageView?
     var iosBlurFilter = GPUImageiOSBlurFilter()
+    var customBackgroundView: UIView?
     
     var circle: UIView?
     var circleIsNormalSize = true
@@ -30,6 +32,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupCustomBackgroundView()
         setupCircle()
         
         if videoCamera {
@@ -57,6 +60,19 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                     self.scaleCircleTo(1)
                 })
         }
+    }
+    
+    func setupCustomBackgroundView() {
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        customBackgroundView = UIView(frame: self.view.frame)
+        customBackgroundView!.backgroundColor = UIColor.whiteColor()
+        customBackgroundView!.alpha = customBackgroundAlpha
+        self.view.addSubview(customBackgroundView)
+        
+        var littleStatusBar = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 20))
+        littleStatusBar.backgroundColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: circleAlpha)
+        self.view.addSubview(littleStatusBar)
     }
     
     func setupLiveBlurBackground() {
