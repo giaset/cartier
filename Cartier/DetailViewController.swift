@@ -42,7 +42,7 @@ class DetailViewController: UITableViewController {
         var headerView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 250))
         headerView.backgroundColor = UIColor.blackColor()
         
-        let overflowAmount: Float = 500
+        let overflowAmount: CGFloat = 500
         var topOverflowView = UIView(frame: CGRectMake(0, -overflowAmount, self.view.frame.width, overflowAmount))
         topOverflowView.backgroundColor = UIColor.blackColor()
         headerView.addSubview(topOverflowView)

@@ -14,9 +14,9 @@ import QuartzCore
 class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     /* Constants */
-    let circleRadius: Float = 75
+    let circleRadius: CGFloat = 75
     let circleAnimDuration = 0.3
-    let circleAlpha: Float = 0.6
+    let circleAlpha: CGFloat = 0.6
     
     var videoCamera: GPUImageVideoCamera? = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
     var videoView: GPUImageView?
