@@ -26,6 +26,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     var circle: UIView?
     var circleIsNormalSize = true
+    var circleStartingCenter = CGPointMake(0, 0)
     
     var locationManager = CLLocationManager()
     
@@ -97,6 +98,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     func setupCircle() {
         circle = UIView(frame: CGRectMake(CGRectGetMidX(self.view.frame)-circleRadius, CGRectGetMidY(self.view.frame)-circleRadius, 2*circleRadius, 2*circleRadius))
+        circleStartingCenter = circle!.center
         setCircleAlphaTo(circleAlpha)
         circle!.layer.cornerRadius = circleRadius
         
@@ -121,10 +123,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     func handleDrag(sender: UIPanGestureRecognizer) {
         if circleIsNormalSize {
-            /*var newX = circle!.center.x + sender.translationInView(self.view).x
-            var newY = circle!.center.y + sender.translationInView(self.view).y
-            circle!.center = CGPointMake(newX, newY)*/
-            println(circle!.center)
+            circle!.center = circleStartingCenter.plus(sender.translationInView(self.view))
         }
     }
     
@@ -170,4 +169,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
         NetworkingManager.sharedInstance.findFoursquarePlaces(userLocation.coordinate)
     }
+}
+
+extension CGPoint {
+    
+    func plus (otherPoint: CGPoint) -> CGPoint {
+        return CGPointMake(self.x + otherPoint.x, self.y + otherPoint.y)
+    }
+    
 }
