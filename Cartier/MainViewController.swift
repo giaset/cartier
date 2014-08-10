@@ -17,7 +17,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     let circleRadius: CGFloat = 75
     let circleAnimDuration = 0.3
     let circleAlpha: CGFloat = 0.6
-    let customBackgroundAlpha: CGFloat = 0.6
+    let customBackgroundAlpha: CGFloat = 0.4
     
     var videoCamera: GPUImageVideoCamera? = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
     var videoView: GPUImageView?
@@ -124,6 +124,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     func handleDrag(sender: UIPanGestureRecognizer) {
         if circleIsNormalSize {
             circle!.center = circleStartingCenter.plus(sender.translationInView(self.view))
+            
+            if (sender.state == .Ended) {
+                UIView.animateWithDuration(0.2, animations: {
+                    self.circle!.center = self.circleStartingCenter
+                    })
+            }
         }
     }
     
