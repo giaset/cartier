@@ -39,11 +39,11 @@ class DetailViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
-        var headerView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 250))
+        var headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 250))
         headerView.backgroundColor = UIColor.blackColor()
         
         let overflowAmount: CGFloat = 500
-        var topOverflowView = UIView(frame: CGRectMake(0, -overflowAmount, self.view.frame.width, overflowAmount))
+        var topOverflowView = UIView(frame: CGRect(x: 0, y: -overflowAmount, width: self.view.frame.width, height: overflowAmount))
         topOverflowView.backgroundColor = UIColor.blackColor()
         headerView.addSubview(topOverflowView)
         

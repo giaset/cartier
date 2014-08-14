@@ -71,7 +71,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         customBackgroundView!.alpha = customBackgroundAlpha
         self.view.addSubview(customBackgroundView)
         
-        var littleStatusBar = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 20))
+        var littleStatusBar = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 20))
         littleStatusBar.backgroundColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: circleAlpha)
         self.view.addSubview(littleStatusBar)
     }
@@ -97,7 +97,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func setupCircle() {
-        circle = UIView(frame: CGRectMake(CGRectGetMidX(self.view.frame)-circleRadius, CGRectGetMidY(self.view.frame)-circleRadius, 2*circleRadius, 2*circleRadius))
+        circle = UIView(frame: CGRect(x: CGRectGetMidX(self.view.frame)-circleRadius, y: CGRectGetMidY(self.view.frame)-circleRadius, width: 2*circleRadius, height: 2*circleRadius))
         circleStartingCenter = circle!.center
         setCircleAlphaTo(circleAlpha)
         circle!.layer.cornerRadius = circleRadius
