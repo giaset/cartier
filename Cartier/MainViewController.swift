@@ -17,7 +17,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     let circleRadius: CGFloat = 75
     let circleAnimDuration = 0.3
     let circleAlpha: CGFloat = 0.6
-    let customBackgroundAlpha: CGFloat = 0.4
+    let customBackgroundAlpha: CGFloat = 0.9
     
     var videoCamera: GPUImageVideoCamera? = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
     var videoView: GPUImageView?
@@ -72,7 +72,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         self.view.addSubview(customBackgroundView)
         
         var littleStatusBar = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 20))
-        littleStatusBar.backgroundColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: circleAlpha)
+        littleStatusBar.backgroundColor = UIColor.cartierGreenColor(alpha: circleAlpha)
         self.view.addSubview(littleStatusBar)
     }
     
@@ -123,7 +123,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     func handleDrag(sender: UIPanGestureRecognizer) {
         if circleIsNormalSize {
-            circle!.center = circleStartingCenter.plus(sender.translationInView(self.view))
+            circle!.center = circleStartingCenter + sender.translationInView(self.view)
             
             if (sender.state == .Ended) {
                 UIView.animateWithDuration(0.2, animations: {
@@ -166,7 +166,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func setCircleAlphaTo(newAlpha: CGFloat) {
-        self.circle!.backgroundColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: newAlpha)
+        self.circle!.backgroundColor = UIColor.cartierGreenColor(alpha: newAlpha)
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: AnyObject[]) {
@@ -177,10 +177,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
 }
 
-extension CGPoint {
+extension UIColor {
     
-    func plus (otherPoint: CGPoint) -> CGPoint {
-        return CGPointMake(self.x + otherPoint.x, self.y + otherPoint.y)
+    class func cartierGreenColor (#alpha: Double) -> UIColor {
+        return UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: alpha)
     }
     
+}
+
+// Define addition for CGPoints
+@infix func + (left: CGPoint, right: CGPoint) -> CGPoint {
+    return CGPoint(x: left.x + right.x, y: left.y + right.y)
 }

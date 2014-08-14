@@ -13,7 +13,7 @@ class DetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: 1)
+        self.view.backgroundColor = UIColor.cartierGreenColor(alpha: 1)
         
         self.navigationController.navigationBar.barTintColor = UIColor.blackColor()
         self.navigationController.navigationBar.tintColor = UIColor.whiteColor()
