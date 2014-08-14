@@ -17,7 +17,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     let circleRadius: CGFloat = 75
     let circleAnimDuration = 0.3
     let circleAlpha: CGFloat = 0.6
-    let customBackgroundAlpha: CGFloat = 0.9
+    let customBackgroundAlpha: CGFloat = 0.7
     
     var videoCamera: GPUImageVideoCamera? = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
     var videoView: GPUImageView?
@@ -173,13 +173,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         var userLocation: CLLocation = locations[locations.endIndex - 1] as CLLocation
         
-        NetworkingManager.sharedInstance.findFoursquarePlaces(userLocation.coordinate)
+        //NetworkingManager.sharedInstance.findFoursquarePlaces(userLocation.coordinate)
     }
 }
 
 extension UIColor {
     
-    class func cartierGreenColor (#alpha: Double) -> UIColor {
+    class func cartierGreenColor (#alpha: CGFloat) -> UIColor {
         return UIColor(red: 0.086, green: 0.627, blue: 0.522, alpha: alpha)
     }
     
