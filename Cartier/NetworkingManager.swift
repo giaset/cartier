@@ -13,10 +13,6 @@ class NetworkingManager: NSObject {
     
     let afNetworkingManager: AFHTTPRequestOperationManager
     
-    let foursquareClientId = "35UH1ZRV1LML4OMHUNV2CISGII0GHFILV3Z1CHDBQB5WHIO1"
-    let foursquareClientSecret = "5NCVL2KJG5WDNS4KX2ZR5SVP3UDMFJNZL04LSHJLLDL5ZY0G"
-    let foursquareVersion = "20140803"
-    
     init() {
         afNetworkingManager = AFHTTPRequestOperationManager()
         afNetworkingManager.responseSerializer = AFJSONResponseSerializer()
@@ -30,31 +26,14 @@ class NetworkingManager: NSObject {
         return Static.instance
     }
     
-    func findFoursquarePlaces(coordinates: CLLocationCoordinate2D) {
-        var urlString = "http://nonna.herokuapp.com/?lat=\(coordinates.latitude)&lng=\(coordinates.longitude)"
+    func getClosestAttractionForCoordinates(coordinates: CLLocationCoordinate2D, onComplete: (AnyObject!) -> ()) {
+        var urlString = "http://nonna.herokuapp.com/knows?lat=\(coordinates.latitude)&lng=\(coordinates.longitude)"
         
         func success(operation: AFHTTPRequestOperation!, responseObject: AnyObject!) {
-            println(responseObject)
+            onComplete(responseObject)
         }
         
         afNetworkingManager.GET(urlString, parameters: nil, success: success, failure: popError)
-        /*var urlString = "https://api.foursquare.com/v2/venues/explore?client_id=\(foursquareClientId)&client_secret=\(foursquareClientSecret)&ll=\(coordinates.latitude),\(coordinates.longitude)&v=\(foursquareVersion)"
-        
-        func success(operation: AFHTTPRequestOperation!, responseObject: AnyObject!) {
-            let responseDict = responseObject as Dictionary<String, AnyObject>
-            
-            let actualResponseDict: Dictionary<String, AnyObject>? = (responseDict["response"] as AnyObject?) as? Dictionary<String, AnyObject>
-            
-            let groupsArray: AnyObject[]? = (actualResponseDict!["groups"] as AnyObject?) as? AnyObject[]
-            
-            println(groupsArray![0])
-            
-            let groupsDict: Dictionary<String, AnyObject>? = (actualResponseDict!["groups"] as AnyObject?) as? Dictionary<String, AnyObject>
-            
-            println(actualResponseDict)
-        }
-        
-        afNetworkingManager.GET(urlString, parameters: nil, success: success, failure: popError)*/
     }
     
     func popError(operation: AFHTTPRequestOperation!, error: NSError!) {

@@ -173,7 +173,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         var userLocation: CLLocation = locations[locations.endIndex - 1] as CLLocation
         
-        NetworkingManager.sharedInstance.findFoursquarePlaces(userLocation.coordinate)
+        NetworkingManager.sharedInstance.getClosestAttractionForCoordinates(userLocation.coordinate, onComplete: { response in
+            println(response)
+            })
     }
 }
 
