@@ -31,6 +31,7 @@
 		68E8CD57198EA4E200E275BD /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E8CD44198EA4E200E275BD /* UIProgressView+AFNetworking.m */; };
 		68E8CD58198EA4E200E275BD /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E8CD46198EA4E200E275BD /* UIRefreshControl+AFNetworking.m */; };
 		68E8CD59198EA4E200E275BD /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E8CD48198EA4E200E275BD /* UIWebView+AFNetworking.m */; };
+		68F36055199C8671001A0F59 /* BigAssTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F36054199C8671001A0F59 /* BigAssTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		68E8CD47198EA4E200E275BD /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		68E8CD48198EA4E200E275BD /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		68E8CD5A198EA5A200E275BD /* Cartier-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cartier-Bridging-Header.h"; sourceTree = "<group>"; };
+		68F36054199C8671001A0F59 /* BigAssTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigAssTextView.swift; path = "Custom Views/BigAssTextView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 				68691CB919774D5B00C66C4E /* MainViewController.swift */,
 				68E8CD1F198DA92500E275BD /* DetailViewController.swift */,
 				680E0B94198F5B0E00C77EAC /* NetworkingManager.swift */,
+				68F36058199C8678001A0F59 /* Custom Views */,
 				68E8CD5A198EA5A200E275BD /* Cartier-Bridging-Header.h */,
 			);
 			path = Cartier;
@@ -228,6 +231,14 @@
 				68E8CD48198EA4E200E275BD /* UIWebView+AFNetworking.m */,
 			);
 			path = "UIKit+AFNetworking";
+			sourceTree = "<group>";
+		};
+		68F36058199C8678001A0F59 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				68F36054199C8671001A0F59 /* BigAssTextView.swift */,
+			);
+			name = "Custom Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +353,7 @@
 				68E8CD52198EA4E200E275BD /* AFNetworkActivityIndicatorManager.m in Sources */,
 				68E8CD51198EA4E200E275BD /* AFURLSessionManager.m in Sources */,
 				68009497197734230077F01B /* AppDelegate.swift in Sources */,
+				68F36055199C8671001A0F59 /* BigAssTextView.swift in Sources */,
 				68691CBA19774D5B00C66C4E /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
