@@ -157,8 +157,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 self.setCircleAlphaTo(1)
                 }, completion: {
                     didFinish in
-                    var detailViewController = DetailViewController(style: .Grouped)
-                    self.navigationController.pushViewController(detailViewController, animated: false)
                 })
         } else if (basicAnim.toValue as Float == 1) {
             circleIsNormalSize = true
@@ -174,7 +172,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         var userLocation: CLLocation = locations[locations.endIndex - 1] as CLLocation
         
         NetworkingManager.sharedInstance.getClosestAttractionForCoordinates(userLocation.coordinate, onComplete: { response in
-            println(response)
+            var detailViewController = DetailViewController(style: .Grouped)
+            self.navigationController.pushViewController(detailViewController, animated: false)
             })
     }
 }

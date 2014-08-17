@@ -10,6 +10,8 @@ import UIKit
 
 class DetailViewController: UITableViewController {
     
+    let headerHeight: CGFloat = 213
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,11 +37,11 @@ class DetailViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView!, heightForHeaderInSection section: Int) -> CGFloat {
-        return 250
+        return headerHeight
     }
     
     override func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
-        var headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 250))
+        var headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: headerHeight))
         headerView.backgroundColor = UIColor.blackColor()
         
         let overflowAmount: CGFloat = 500
