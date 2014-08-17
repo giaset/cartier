@@ -22,7 +22,7 @@ class NetworkingManager: NSObject {
         afNetworkingManager.responseSerializer = AFJSONResponseSerializer()
     }
     
-    // From StackOverflow, how to handle Singletons in Swift
+    // From StackOverflow, how to create Singletons in Swift
     class var sharedInstance: NetworkingManager {
         struct Static {
             static let instance: NetworkingManager = NetworkingManager()
@@ -31,19 +31,23 @@ class NetworkingManager: NSObject {
     }
     
     func findFoursquarePlaces(coordinates: CLLocationCoordinate2D) {
-        var urlString = "https://api.foursquare.com/v2/venues/explore?client_id=\(foursquareClientId)&client_secret=\(foursquareClientSecret)&ll=\(coordinates.latitude),\(coordinates.longitude)&v=\(foursquareVersion)"
+        /*var urlString = "https://api.foursquare.com/v2/venues/explore?client_id=\(foursquareClientId)&client_secret=\(foursquareClientSecret)&ll=\(coordinates.latitude),\(coordinates.longitude)&v=\(foursquareVersion)"
         
         func success(operation: AFHTTPRequestOperation!, responseObject: AnyObject!) {
             let responseDict = responseObject as Dictionary<String, AnyObject>
             
             let actualResponseDict: Dictionary<String, AnyObject>? = (responseDict["response"] as AnyObject?) as? Dictionary<String, AnyObject>
             
+            let groupsArray: AnyObject[]? = (actualResponseDict!["groups"] as AnyObject?) as? AnyObject[]
+            
+            println(groupsArray![0])
+            
             let groupsDict: Dictionary<String, AnyObject>? = (actualResponseDict!["groups"] as AnyObject?) as? Dictionary<String, AnyObject>
             
             println(actualResponseDict)
         }
         
-        afNetworkingManager.GET(urlString, parameters: nil, success: success, failure: popError)
+        afNetworkingManager.GET(urlString, parameters: nil, success: success, failure: popError)*/
     }
     
     func popError(operation: AFHTTPRequestOperation!, error: NSError!) {
