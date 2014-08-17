@@ -31,6 +31,13 @@ class NetworkingManager: NSObject {
     }
     
     func findFoursquarePlaces(coordinates: CLLocationCoordinate2D) {
+        var urlString = "http://nonna.herokuapp.com/?lat=\(coordinates.latitude)&lng=\(coordinates.longitude)"
+        
+        func success(operation: AFHTTPRequestOperation!, responseObject: AnyObject!) {
+            println(responseObject)
+        }
+        
+        afNetworkingManager.GET(urlString, parameters: nil, success: success, failure: popError)
         /*var urlString = "https://api.foursquare.com/v2/venues/explore?client_id=\(foursquareClientId)&client_secret=\(foursquareClientSecret)&ll=\(coordinates.latitude),\(coordinates.longitude)&v=\(foursquareVersion)"
         
         func success(operation: AFHTTPRequestOperation!, responseObject: AnyObject!) {
